@@ -18,10 +18,15 @@ public class PlayerController : MonoBehaviour
     private bool _canReclaimBody;
     [SerializeField]
     private bool _isPossessed;
+    [SerializeField]
+    private Sprite _playerSprite;
+    [SerializeField]
+    private Sprite _ghostSprite;
 
     void Start()
     {
         _canPressButton = true;
+        GetComponent<SpriteRenderer>().sprite = _playerSprite;
     }
 
     void Update()
@@ -70,6 +75,12 @@ public class PlayerController : MonoBehaviour
         if (collider.GetComponent<Button>() && _canPressButton && !_isPossessed) {
             PressButton(collider.GetComponent<Button>());            
         }
+
+        if (collider.tag == "Ghost" && _canReclaimBody) {
+            collider.GetComponent<GhostController>().RestartGhost();
+            _isPossessed = false;
+            GetComponent<SpriteRenderer>().sprite = _playerSprite;
+        } 
     }
 
     void OnTriggerExit(Collider collider) {
@@ -80,7 +91,13 @@ public class PlayerController : MonoBehaviour
 
     public void Possession() {
         _isPossessed = true;
-        _canReclaimBody = false;
+        _canReclaimBody = false;        
+        GetComponent<SpriteRenderer>().sprite = _ghostSprite;
+        StartCoroutine(ReclaimBodyCooldown());
     }
 
+    IEnumerator ReclaimBodyCooldown() {
+        yield return new WaitForSeconds(1f);
+        _canReclaimBody = true;
+    }
 }

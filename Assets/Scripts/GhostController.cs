@@ -51,4 +51,9 @@ public class GhostController : MonoBehaviour
             Recorder.recording = false;
         }
     }
+
+    public void RestartGhost() {
+        transform.position = Recorder.points[0];
+        _state = AIState.StalkingPlayer;        
+    }
 }
