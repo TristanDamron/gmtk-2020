@@ -314,6 +314,20 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 177765814026635839}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1114257971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1114257970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32cde52cb3f80c04b9cda5cccce2b678, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 0}
+  _moveSpeed: 0.25
 --- !u!50 &1114257973
 Rigidbody2D:
   serializedVersion: 4
@@ -371,7 +385,7 @@ PrefabInstance:
     - target: {fileID: 177765812917907467, guid: 294ac4bc49e9d5a45b76acb99835bca9,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.57
+      value: -2.096
       objectReference: {fileID: 0}
     - target: {fileID: 177765812917907467, guid: 294ac4bc49e9d5a45b76acb99835bca9,
         type: 3}
