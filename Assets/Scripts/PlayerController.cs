@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private bool _canReclaimBody;
     [SerializeField]
-    public bool isPossessed;
+    private bool _isPossessed;
 
     void Start()
     {
@@ -25,11 +25,7 @@ public class PlayerController : MonoBehaviour
     }
 
     void Update()
-    {
-        if (isPossessed) {
-
-        }
-        
+    {        
         Move();
     }
 
@@ -71,7 +67,7 @@ public class PlayerController : MonoBehaviour
     }
 
     void OnTriggerStay(Collider collider) {
-        if (collider.GetComponent<Button>() && _canPressButton) {
+        if (collider.GetComponent<Button>() && _canPressButton && !_isPossessed) {
             PressButton(collider.GetComponent<Button>());            
         }
     }
@@ -81,4 +77,10 @@ public class PlayerController : MonoBehaviour
             _canPressButton = true;
         }
     }
+
+    public void Possession() {
+        _isPossessed = true;
+        _canReclaimBody = false;
+    }
+
 }
