@@ -72,6 +72,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public bool CheckPossessed() {
+        return _isPossessed;
+    }
 
     private void PickUp(GameObject g) {
         Destroy(g);
@@ -87,6 +90,7 @@ public class PlayerController : MonoBehaviour
             collider.GetComponent<GhostController>().RestartGhost();
             _isPossessed = false;
             GetComponent<SpriteRenderer>().sprite = _playerSprite;
+            gameObject.layer = LayerMask.NameToLayer("Default");            
         }
 
         if (collider.tag == "Item" && !_isPossessed) {
@@ -102,7 +106,8 @@ public class PlayerController : MonoBehaviour
 
     public void Possession() {
         _isPossessed = true;
-        _canReclaimBody = false;        
+        _canReclaimBody = false;    
+        gameObject.layer = LayerMask.NameToLayer("Ghost");
         GetComponent<SpriteRenderer>().sprite = _ghostSprite;
         StartCoroutine(ReclaimBodyCooldown());
     }

@@ -22,13 +22,17 @@ public class GhostController : MonoBehaviour
     private AIState _state;
     [SerializeField]
     private NavMeshAgent _agent;
+    [SerializeField]
+    private Transform _exit;
 
     void Start()
     {        
         _state = AIState.StalkingPlayer;
+        if (!_exit) {
+            _exit = GameObject.Find("Exit").transform;
+        }
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         _agent.destination = transform.position;
@@ -45,13 +49,23 @@ public class GhostController : MonoBehaviour
                 _currentSpeedMultiplier = _maxSpeedMultiplier;
             }
 
+            if (Recorder.points.Count == 0 && _state == AIState.BackToStart) {
+                _target = _exit.position;
+            }
+
+
             _agent.SetDestination(_target);        
             _agent.speed = _moveSpeed * _currentSpeedMultiplier;    
         }
 
-        if (Recorder.points.Count == 0 && _state == AIState.BackToStart) {
+
+        if (Vector3.Distance(transform.position, _exit.position) < 1f && _state == AIState.BackToStart) {
             GameManager.blackOut = true;
         }
+    }
+
+    private void PressButton(Button b) {
+        b.ActivateButton();
     }
 
     void OnTriggerEnter(Collider c) {
@@ -59,6 +73,10 @@ public class GhostController : MonoBehaviour
             c.GetComponent<PlayerController>().Possession();            
             _state = AIState.BackToStart;            
             Recorder.recording = false;
+        }
+
+        if (c.GetComponent<Button>() != null && _state == AIState.BackToStart) {            
+            PressButton(c.GetComponent<Button>());
         }
     }
 
