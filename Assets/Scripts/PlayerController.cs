@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     private float _decellerationRate;
     [SerializeField]
     private bool _canPressButton;
+    public bool isPossessed;
 
     void Start()
     {
@@ -22,7 +23,8 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        Move();
+        if (!isPossessed)
+            Move();
     }
 
     private void PressButton(Button b) {

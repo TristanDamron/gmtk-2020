@@ -10,9 +10,13 @@ public class GhostController : MonoBehaviour
     }
 
     [SerializeField]
-    private Transform _target;    
+    private Vector3 _target;    
     [SerializeField]
     private float _moveSpeed;
+    [SerializeField]
+    private float _currentSpeedMultiplier;
+    [SerializeField]
+    private float _maxSpeedMultiplier;
     [SerializeField]
     private AIState _state;
 
@@ -25,8 +29,27 @@ public class GhostController : MonoBehaviour
     void Update()
     {
         if (_state == AIState.StalkingPlayer) {
-            _target = GameObject.FindGameObjectWithTag("Player").transform;            
-            transform.position = Vector3.MoveTowards(transform.position, _target.position, Time.deltaTime * _moveSpeed);            
+            Recorder.recording = true;
+            _target = GameObject.FindGameObjectWithTag("Player").transform.position;   
+            _currentSpeedMultiplier = 1f;                     
+        } else if (_state == AIState.BackToStart && Recorder.points.Count != 0) {
+            _target = Recorder.points[Recorder.points.Count - 1];
+            if (Vector3.Distance(transform.position, _target) < 0.25f) {
+                Recorder.points.Remove(_target);
+            }
+            _currentSpeedMultiplier = _maxSpeedMultiplier;
+        }
+
+        transform.position = Vector3.MoveTowards(transform.position, _target, Time.deltaTime * _moveSpeed * _currentSpeedMultiplier);                        
+    }
+
+    void OnTriggerEnter(Collider c) {
+        if (c.tag == "Player" && _state == AIState.StalkingPlayer) {
+            c.GetComponent<PlayerController>().isPossessed = true;
+            transform.position = c.transform.position;
+            c.transform.parent = transform;
+            _state = AIState.BackToStart;            
+            Recorder.recording = false;
         }
     }
 }
