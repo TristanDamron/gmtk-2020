@@ -36,7 +36,8 @@ public class GhostController : MonoBehaviour
     void Update()
     {
         _agent.destination = transform.position;
-        if (!GameManager.paused) {            
+        if (!GameManager.paused) {   
+            _agent.isStopped = false;                
             if (_state == AIState.StalkingPlayer) {
                 Recorder.recording = true;
                 _target = GameObject.FindGameObjectWithTag("Player").transform.position;   
@@ -53,9 +54,10 @@ public class GhostController : MonoBehaviour
                 _target = _exit.position;
             }
 
-
             _agent.SetDestination(_target);        
             _agent.speed = _moveSpeed * _currentSpeedMultiplier;    
+        } else {
+            _agent.isStopped = true;            
         }
 
 
@@ -78,6 +80,10 @@ public class GhostController : MonoBehaviour
         if (c.GetComponent<Button>() != null && _state == AIState.BackToStart) {            
             PressButton(c.GetComponent<Button>());
         }
+    }
+
+    public void SetNextPosition(Vector3 pos) {
+        _agent.Warp(pos);    
     }
 
     public void RestartGhost() {

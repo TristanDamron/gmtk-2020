@@ -12,18 +12,41 @@ public class CameraFollow : MonoBehaviour
     private float _minZoomLevel;
     [SerializeField]
     private float _maxZoomLevel;
+    [SerializeField]
+    private bool _ghostIntroStarted;
 
     void Start() {
         if (!_target) {
-            _target = GameObject.FindGameObjectWithTag("Player").transform;
+            FollowPlayer();
         }
         
         _minZoomLevel = GetComponent<Camera>().orthographicSize;
         _maxZoomLevel = _minZoomLevel * 4;
     }
 
+    private void FollowPlayer() {
+        _target = GameObject.FindGameObjectWithTag("Player").transform;        
+    }
+
+    private void GhostIntro() {
+        _target = GameObject.Find("Ghost").transform;  
+        StartCoroutine(WaitAndResumePlay());
+    }
+
+    private IEnumerator WaitAndResumePlay() {        
+        yield return new WaitForSeconds(2f);
+        FollowPlayer();
+        GameManager.paused = false;
+        GameManager.ghostIntro = false;
+    }
+
+
     void Update()
     {
+        if (GameManager.ghostIntro) {            
+            GhostIntro();            
+        }
+
         var pos = transform.position;
         pos.x = _target.position.x;
         pos.y = _target.position.y;
