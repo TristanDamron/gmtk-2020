@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class GhostController : MonoBehaviour
 {    
@@ -19,6 +20,8 @@ public class GhostController : MonoBehaviour
     private float _maxSpeedMultiplier;
     [SerializeField]
     private AIState _state;
+    [SerializeField]
+    private NavMeshAgent _agent;
 
     void Start()
     {        
@@ -28,6 +31,8 @@ public class GhostController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        _agent.destination = transform.position;
+
         if (_state == AIState.StalkingPlayer) {
             Recorder.recording = true;
             _target = GameObject.FindGameObjectWithTag("Player").transform.position;   
@@ -40,13 +45,13 @@ public class GhostController : MonoBehaviour
             _currentSpeedMultiplier = _maxSpeedMultiplier;
         }
 
-        transform.position = Vector3.MoveTowards(transform.position, _target, Time.deltaTime * _moveSpeed * _currentSpeedMultiplier);                        
+        _agent.SetDestination(_target);        
+        _agent.speed = _moveSpeed * _currentSpeedMultiplier;
     }
 
     void OnTriggerEnter(Collider c) {
         if (c.tag == "Player" && _state == AIState.StalkingPlayer) {
-            c.GetComponent<PlayerController>().Possession();
-            transform.position = c.transform.position;                        
+            c.GetComponent<PlayerController>().Possession();            
             _state = AIState.BackToStart;            
             Recorder.recording = false;
         }

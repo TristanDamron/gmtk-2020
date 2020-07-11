@@ -225,42 +225,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cd575c36d529ec43996f8537c5517cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1114257970 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 177765812917907469, guid: 294ac4bc49e9d5a45b76acb99835bca9,
-    type: 3}
-  m_PrefabInstance: {fileID: 177765814026635839}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1114257971
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1114257970}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32cde52cb3f80c04b9cda5cccce2b678, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _target: {x: 0, y: 0, z: 0}
-  _moveSpeed: 0.25
-  _currentSpeedMultiplier: 0
-  _maxSpeedMultiplier: 3
-  _state: 0
---- !u!65 &1114257972
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1114257970}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.2, y: 0.2, z: 0.2}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &177765814026635839
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -326,11 +290,6 @@ PrefabInstance:
     - target: {fileID: 177765812917907469, guid: 294ac4bc49e9d5a45b76acb99835bca9,
         type: 3}
       propertyPath: m_Name
-      value: Ghost
-      objectReference: {fileID: 0}
-    - target: {fileID: 177765812917907469, guid: 294ac4bc49e9d5a45b76acb99835bca9,
-        type: 3}
-      propertyPath: m_TagString
       value: Ghost
       objectReference: {fileID: 0}
     m_RemovedComponents: []
