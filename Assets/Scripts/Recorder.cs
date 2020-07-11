@@ -24,7 +24,6 @@ public class Recorder : MonoBehaviour
             if (Vector3.Distance(_player.position, points[points.Count - 1]) > 0.25f) {                
                 points.Add(_player.position);
             }
-        }
-        Debug.Log(points);
+        }        
     }
 }
