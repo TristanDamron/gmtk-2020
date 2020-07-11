@@ -24,12 +24,18 @@ public class GhostController : MonoBehaviour
     private NavMeshAgent _agent;
     [SerializeField]
     private Transform _exit;
+    [SerializeField]
+    private Transform _hubSpawn;
 
     void Start()
     {        
         _state = AIState.StalkingPlayer;
         if (!_exit) {
             _exit = GameObject.Find("Exit").transform;
+        }
+
+        if (!_hubSpawn) {
+            _hubSpawn = GameObject.Find("Ghost Hub Spawn").transform;
         }
     }
     
@@ -63,6 +69,8 @@ public class GhostController : MonoBehaviour
 
         if (Vector3.Distance(transform.position, _exit.position) < 1f && _state == AIState.BackToStart) {
             GameManager.blackOut = true;
+            SetNextPosition(_hubSpawn.position);
+            _state = AIState.StalkingPlayer;
         }
     }
 
