@@ -30,8 +30,9 @@ public class PlayerController : MonoBehaviour
     }
 
     void Update()
-    {        
-        Move();
+    {    
+        if (!GameManager.paused)    
+            Move();
     }
 
     private void PressButton(Button b) {

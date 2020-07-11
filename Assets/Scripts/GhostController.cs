@@ -32,21 +32,22 @@ public class GhostController : MonoBehaviour
     void Update()
     {
         _agent.destination = transform.position;
-
-        if (_state == AIState.StalkingPlayer) {
-            Recorder.recording = true;
-            _target = GameObject.FindGameObjectWithTag("Player").transform.position;   
-            _currentSpeedMultiplier = 1f;                     
-        } else if (_state == AIState.BackToStart && Recorder.points.Count != 0) {
-            _target = Recorder.points[Recorder.points.Count - 1];
-            if (Vector3.Distance(transform.position, _target) < 0.25f) {
-                Recorder.points.Remove(_target);
+        if (!GameManager.paused) {            
+            if (_state == AIState.StalkingPlayer) {
+                Recorder.recording = true;
+                _target = GameObject.FindGameObjectWithTag("Player").transform.position;   
+                _currentSpeedMultiplier = 1f;                     
+            } else if (_state == AIState.BackToStart && Recorder.points.Count != 0) {
+                _target = Recorder.points[Recorder.points.Count - 1];
+                if (Vector3.Distance(transform.position, _target) < 0.25f) {
+                    Recorder.points.Remove(_target);
+                }
+                _currentSpeedMultiplier = _maxSpeedMultiplier;
             }
-            _currentSpeedMultiplier = _maxSpeedMultiplier;
-        }
 
-        _agent.SetDestination(_target);        
-        _agent.speed = _moveSpeed * _currentSpeedMultiplier;
+            _agent.SetDestination(_target);        
+            _agent.speed = _moveSpeed * _currentSpeedMultiplier;    
+        }
     }
 
     void OnTriggerEnter(Collider c) {

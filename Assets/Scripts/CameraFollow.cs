@@ -30,8 +30,10 @@ public class CameraFollow : MonoBehaviour
         transform.position = Vector3.Lerp(transform.position, pos, Time.deltaTime / _delay);
 
         if (Input.GetKey(KeyCode.LeftShift)) {
+            GameManager.paused = true;
             GetComponent<Camera>().orthographicSize = Mathf.Lerp(GetComponent<Camera>().orthographicSize, _maxZoomLevel, Time.deltaTime * 4f);
         } else {
+            GameManager.paused = false;
             GetComponent<Camera>().orthographicSize = Mathf.Lerp(GetComponent<Camera>().orthographicSize, _minZoomLevel, Time.deltaTime * 4f);
         }
     }
