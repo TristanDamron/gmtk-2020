@@ -372,7 +372,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {x: 0, y: 0, z: 0}
   _moveSpeed: 0.25
-  _speedMultiplier: 0
+  _currentSpeedMultiplier: 0
+  _maxSpeedMultiplier: 3
   _state: 0
 --- !u!65 &1114257972
 BoxCollider:

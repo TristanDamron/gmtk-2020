@@ -15,29 +15,33 @@ public class State : MonoBehaviour
     void Start() {
         switch(_type) {
             case StateType.Open:
-                GetComponent<BoxCollider>().isTrigger = true;                
-                GetComponent<SpriteRenderer>().enabled = false;                
+                GetComponent<BoxCollider>().isTrigger = true;    
+                GetComponent<SpriteRenderer>().color = Color.green;            
+                // GetComponent<SpriteRenderer>().enabled = false;                
                 break;
             case StateType.Close:
                 GetComponent<BoxCollider>().isTrigger = false; 
-                GetComponent<SpriteRenderer>().enabled = true;               
+                GetComponent<SpriteRenderer>().color = Color.red;
+                // GetComponent<SpriteRenderer>().enabled = true;               
                 break;
         }                    
     }
 
     public void Do() {
         switch(_type) {
-            // OPEN = OFF
+            // OPEN = OFF = GREEN
             case StateType.Open:
                 _type = StateType.Close;
                 GetComponent<BoxCollider>().isTrigger = false;                
-                GetComponent<SpriteRenderer>().enabled = true;                
+                GetComponent<SpriteRenderer>().color = Color.red;
+                // GetComponent<SpriteRenderer>().enabled = true;                
                 break;
-            // CLOSED = ON
+            // CLOSED = ON = RED
             case StateType.Close:
                 _type = StateType.Open;
                 GetComponent<BoxCollider>().isTrigger = true; 
-                GetComponent<SpriteRenderer>().enabled = false;                               
+                GetComponent<SpriteRenderer>().color = Color.green;
+                // GetComponent<SpriteRenderer>().enabled = false;                                               
                 break;
         }
     }
