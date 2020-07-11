@@ -30,14 +30,14 @@ public class CameraFollow : MonoBehaviour
 
     private void GhostIntro() {
         _target = GameObject.Find("Ghost").transform;  
+        GameManager.ghostIntro = false;
         StartCoroutine(WaitAndResumePlay());
     }
 
     private IEnumerator WaitAndResumePlay() {        
         yield return new WaitForSeconds(2f);
         FollowPlayer();
-        GameManager.playerPaused = false;
-        GameManager.ghostIntro = false;
+        GameManager.playerPaused = false;        
     }
 
 
