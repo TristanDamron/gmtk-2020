@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     private float _accelerationRate;
     [SerializeField]
     private float _decellerationRate;
+    [SerializeField]
+    private bool _canPressButton;
 
     void Start()
     {
@@ -25,6 +27,7 @@ public class PlayerController : MonoBehaviour
 
     private void PressButton(Button b) {
         b.ActivateButton();
+        _canPressButton = false;
     }
 
     private void Move() {
@@ -60,8 +63,14 @@ public class PlayerController : MonoBehaviour
     }
 
     void OnTriggerStay(Collider collider) {
-        if (collider.GetComponent<Button>() && Input.GetKey(KeyCode.Space)) {
-            PressButton(collider.GetComponent<Button>());
+        if (collider.GetComponent<Button>() && Input.GetKey(KeyCode.Space) && _canPressButton) {
+            PressButton(collider.GetComponent<Button>());            
+        }
+    }
+
+    void OnTriggerExit(Collider collider) {
+        if (collider.GetComponent<Button>()) {
+            _canPressButton = true;
         }
     }
 }

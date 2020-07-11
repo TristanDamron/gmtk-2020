@@ -5,15 +5,11 @@ using UnityEngine;
 public class Button : MonoBehaviour
 {
     [SerializeField]
-    private bool _activated;
+    private ButtonAction[] _actions;
 
-    void Update() {
-        if (_activated) {
-            // do something
-        }        
-    }    
-
-    public void ActivateButton() {
-        _activated = !_activated;        
+    public void ActivateButton() {        
+        foreach (ButtonAction action in _actions) {
+            action.Do();
+        }            
     }
 }
