@@ -15,8 +15,8 @@ public class State : MonoBehaviour
     void Start() {
         switch(_type) {
             case StateType.Open:
-                GetComponent<BoxCollider>().isTrigger = false;                
-                GetComponent<SpriteRenderer>().enabled = true;                
+                GetComponent<BoxCollider>().isTrigger = true;                
+                GetComponent<SpriteRenderer>().enabled = false;                
                 break;
             case StateType.Close:
                 GetComponent<BoxCollider>().isTrigger = false; 
