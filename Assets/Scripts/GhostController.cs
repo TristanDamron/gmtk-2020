@@ -48,6 +48,10 @@ public class GhostController : MonoBehaviour
             _agent.SetDestination(_target);        
             _agent.speed = _moveSpeed * _currentSpeedMultiplier;    
         }
+
+        if (Recorder.points.Count == 0 && _state == AIState.BackToStart) {
+            GameManager.blackOut = true;
+        }
     }
 
     void OnTriggerEnter(Collider c) {

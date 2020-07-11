@@ -72,6 +72,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+
+    private void PickUp(GameObject g) {
+        Destroy(g);
+        GameManager.items++;
+    }
+
     void OnTriggerStay(Collider collider) {
         if (collider.GetComponent<Button>() && _canPressButton && !_isPossessed) {
             PressButton(collider.GetComponent<Button>());            
@@ -81,6 +87,10 @@ public class PlayerController : MonoBehaviour
             collider.GetComponent<GhostController>().RestartGhost();
             _isPossessed = false;
             GetComponent<SpriteRenderer>().sprite = _playerSprite;
+        }
+
+        if (collider.tag == "Item" && !_isPossessed) {
+            PickUp(collider.gameObject);
         } 
     }
 
