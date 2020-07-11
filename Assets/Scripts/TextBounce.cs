@@ -9,7 +9,6 @@ public class TextBounce : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Space)) {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        }
-        
+        }        
     }
 }
