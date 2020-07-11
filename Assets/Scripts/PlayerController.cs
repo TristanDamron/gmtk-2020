@@ -24,6 +24,8 @@ public class PlayerController : MonoBehaviour
     private Sprite _ghostSprite;
     [SerializeField]
     private float _stunTime;
+    [SerializeField]
+    private float _speedDamper;
 
     void Start()
     {
@@ -35,7 +37,7 @@ public class PlayerController : MonoBehaviour
     }
 
     void Update()
-    {    
+    {            
         if (!GameManager.paused)    
             Move();
     }
@@ -96,7 +98,8 @@ public class PlayerController : MonoBehaviour
             collider.GetComponent<GhostController>().RestartGhost();
             _isPossessed = false;
             GetComponent<SpriteRenderer>().sprite = _playerSprite;
-            gameObject.layer = LayerMask.NameToLayer("Default");            
+            gameObject.layer = LayerMask.NameToLayer("Default");   
+            _maxSpeed *= 2;
         }
 
         if (collider.tag == "Item" && !_isPossessed) {
@@ -111,6 +114,8 @@ public class PlayerController : MonoBehaviour
     }
 
     public void Possession() {
+        _maxSpeed /= 2;
+        _playerSpeed = 0;
         _isPossessed = true;
         _canReclaimBody = false;    
         GameManager.playerPaused = true;
@@ -121,7 +126,7 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator ReclaimBodyCooldown() {
         yield return new WaitForSeconds(_stunTime);
-        _canReclaimBody = true;
+        _canReclaimBody = true;        
         GameManager.playerPaused = false;
     }
 }
