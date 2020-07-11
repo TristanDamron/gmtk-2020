@@ -63,7 +63,7 @@ public class PlayerController : MonoBehaviour
     }
 
     void OnTriggerStay(Collider collider) {
-        if (collider.GetComponent<Button>() && Input.GetKey(KeyCode.Space) && _canPressButton) {
+        if (collider.GetComponent<Button>() && _canPressButton) {
             PressButton(collider.GetComponent<Button>());            
         }
     }
