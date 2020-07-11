@@ -5,10 +5,10 @@ using UnityEngine;
 public class Button : MonoBehaviour
 {
     [SerializeField]
-    private ButtonAction[] _actions;
+    private State[] _actions;
 
     public void ActivateButton() {        
-        foreach (ButtonAction action in _actions) {
+        foreach (State action in _actions) {
             action.Do();
         }            
     }
