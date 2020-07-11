@@ -45,7 +45,7 @@ public class GhostController : MonoBehaviour
 
     void OnTriggerEnter(Collider c) {
         if (c.tag == "Player" && _state == AIState.StalkingPlayer) {
-            c.GetComponent<PlayerController>().isPossessed = true;
+            c.GetComponent<PlayerController>().Possession();
             transform.position = c.transform.position;                        
             _state = AIState.BackToStart;            
             Recorder.recording = false;
