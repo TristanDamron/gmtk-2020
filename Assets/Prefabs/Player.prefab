@@ -95,6 +95,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerSpeed: 0
-  _maxSpeed: 0.25
+  _maxSpeed: 1.5
   _accelerationRate: 0.25
-  _decellerationRate: 2
+  _decellerationRate: 1
