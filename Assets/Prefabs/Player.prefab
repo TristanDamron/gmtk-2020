@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -100,6 +100,11 @@ MonoBehaviour:
   _maxSpeed: 1.5
   _accelerationRate: 0.25
   _decellerationRate: 1
+  _canPressButton: 0
+  _canReclaimBody: 0
+  _isPossessed: 0
+  _playerSprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  _ghostSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!54 &1767265618
 Rigidbody:
   m_ObjectHideFlags: 0
