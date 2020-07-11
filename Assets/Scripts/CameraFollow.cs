@@ -36,7 +36,7 @@ public class CameraFollow : MonoBehaviour
     private IEnumerator WaitAndResumePlay() {        
         yield return new WaitForSeconds(2f);
         FollowPlayer();
-        GameManager.paused = false;
+        GameManager.playerPaused = false;
         GameManager.ghostIntro = false;
     }
 

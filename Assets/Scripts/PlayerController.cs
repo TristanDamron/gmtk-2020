@@ -22,11 +22,16 @@ public class PlayerController : MonoBehaviour
     private Sprite _playerSprite;
     [SerializeField]
     private Sprite _ghostSprite;
+    [SerializeField]
+    private float _stunTime;
 
     void Start()
     {
         _canPressButton = true;
         GetComponent<SpriteRenderer>().sprite = _playerSprite;
+        if (_stunTime <= 0) {
+            _stunTime = 1;
+        }
     }
 
     void Update()
@@ -45,7 +50,7 @@ public class PlayerController : MonoBehaviour
         var vertical = Input.GetAxis("Vertical");
         var moving = (horizontal != 0f || vertical != 0f);
         
-        if (moving) {
+        if (moving && !GameManager.playerPaused) {
             Accelerate();            
             var pos = transform.position;
             pos.x += horizontal;
@@ -108,13 +113,15 @@ public class PlayerController : MonoBehaviour
     public void Possession() {
         _isPossessed = true;
         _canReclaimBody = false;    
+        GameManager.playerPaused = true;
         gameObject.layer = LayerMask.NameToLayer("Ghost");
         GetComponent<SpriteRenderer>().sprite = _ghostSprite;
         StartCoroutine(ReclaimBodyCooldown());
-    }
+    }    
 
     IEnumerator ReclaimBodyCooldown() {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(_stunTime);
         _canReclaimBody = true;
+        GameManager.playerPaused = false;
     }
 }

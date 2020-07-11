@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static bool paused = false;
+    public static bool playerPaused = false;
     public static int items = 0;            
     public static bool blackOut = false;
     public static bool ghostIntro = false;
@@ -18,7 +19,7 @@ public class GameManager : MonoBehaviour
         if (ghostIntro) {            
             _ghost.transform.position = _ghostSpawnPoint.position; 
             _ghost.GetComponent<GhostController>().SetNextPosition(_ghostSpawnPoint.position);        
-            paused = true; 
+            playerPaused = true; 
         }
     }    
 }

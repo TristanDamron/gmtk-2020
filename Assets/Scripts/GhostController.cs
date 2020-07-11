@@ -40,8 +40,8 @@ public class GhostController : MonoBehaviour
     }
     
     void Update()
-    {
-        _agent.destination = transform.position;
+    {        
+        _agent.destination = transform.position;        
         if (!GameManager.paused) {   
             _agent.isStopped = false;                
             if (_state == AIState.StalkingPlayer) {
@@ -62,8 +62,6 @@ public class GhostController : MonoBehaviour
 
             _agent.SetDestination(_target);        
             _agent.speed = _moveSpeed * _currentSpeedMultiplier;    
-        } else {
-            _agent.isStopped = true;            
         }
 
 
