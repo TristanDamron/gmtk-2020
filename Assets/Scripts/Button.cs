@@ -6,10 +6,16 @@ public class Button : MonoBehaviour
 {
     [SerializeField]
     private State[] _actions;
+    [SerializeField]
+    private bool _foreverDoor;
 
     public void ActivateButton() {        
-        foreach (State action in _actions) {
-            action.Do();
+        foreach (State action in _actions) {        
+            if (_foreverDoor) {
+                action.Disable();
+            } else {
+                action.Do();
+            }
         }            
     }
 }

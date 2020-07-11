@@ -77,7 +77,8 @@ public class PlayerController : MonoBehaviour
     }
 
     private void PickUp(GameObject g) {
-        Destroy(g);
+        g.GetComponent<BoxCollider>().enabled = false;
+        g.GetComponent<SpriteRenderer>().enabled = false;        
         GameManager.items++;
     }
 
@@ -94,7 +95,7 @@ public class PlayerController : MonoBehaviour
         }
 
         if (collider.tag == "Item" && !_isPossessed) {
-            PickUp(collider.gameObject);
+            PickUp(collider.gameObject);            
         } 
     }
 
