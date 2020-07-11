@@ -27,15 +27,17 @@ public class State : MonoBehaviour
 
     public void Do() {
         switch(_type) {
+            // OPEN = OFF
             case StateType.Open:
-                GetComponent<BoxCollider>().isTrigger = true;                
-                GetComponent<SpriteRenderer>().enabled = false;
                 _type = StateType.Close;
+                GetComponent<BoxCollider>().isTrigger = false;                
+                GetComponent<SpriteRenderer>().enabled = true;                
                 break;
+            // CLOSED = ON
             case StateType.Close:
-                GetComponent<BoxCollider>().isTrigger = false; 
-                GetComponent<SpriteRenderer>().enabled = true;               
                 _type = StateType.Open;
+                GetComponent<BoxCollider>().isTrigger = true; 
+                GetComponent<SpriteRenderer>().enabled = false;                               
                 break;
         }
     }

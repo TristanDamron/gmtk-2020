@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-
+        _canPressButton = true;
     }
 
     void Update()
