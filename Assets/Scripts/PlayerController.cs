@@ -23,6 +23,10 @@ public class PlayerController : MonoBehaviour
         Move();
     }
 
+    private void PressButton(Button b) {
+        b.ActivateButton();
+    }
+
     private void Move() {
         var horizontal = Input.GetAxis("Horizontal");
         var vertical = Input.GetAxis("Vertical");
@@ -52,6 +56,12 @@ public class PlayerController : MonoBehaviour
 
         if (_playerSpeed < 0f) {
             _playerSpeed = 0f;
+        }
+    }
+
+    void OnTriggerStay(Collider collider) {
+        if (collider.GetComponent<Button>() && Input.GetKey(KeyCode.Space)) {
+            PressButton(collider.GetComponent<Button>());
         }
     }
 }
