@@ -26,6 +26,8 @@ public class GhostController : MonoBehaviour
     private Transform _exit;
     [SerializeField]
     private Transform _hubSpawn;
+    [SerializeField]
+    private Transform _spawn;
 
     void Start()
     {        
@@ -37,10 +39,19 @@ public class GhostController : MonoBehaviour
         if (!_hubSpawn) {
             _hubSpawn = GameObject.Find("Ghost Hub Spawn").transform;
         }
+
+        if (!_spawn) {
+            _spawn = GameObject.Find("Ghost Spawn Point").transform;
+        }
     }
     
     void Update()
-    {        
+    {    
+        if (GameManager.ghostIntro) {
+            SetNextPosition(_spawn.position);
+            GameManager.playerPaused = true;
+        }
+
         _agent.destination = transform.position;        
         if (!GameManager.paused) {   
             _agent.isStopped = false;                
@@ -89,6 +100,7 @@ public class GhostController : MonoBehaviour
     }
 
     public void SetNextPosition(Vector3 pos) {
+        Debug.Log("Warping to " + pos);
         _agent.Warp(pos);    
     }
 
