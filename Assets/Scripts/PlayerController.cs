@@ -15,22 +15,27 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private bool _canPressButton;
     [SerializeField]
-    private bool _canReclaimBody;
+    private float _stunTime;
+    // Affected by a cool down. Switched to false when the player gets possessed, then switches to true after a short delay.
+    // During this delay, the player cannot move or collide with the ghost.
+    [SerializeField]
+    private bool _canReclaimBody;    
+    // How slowly the player moves after being possessed.
+    [SerializeField]
+    private float _speedDamper;
     [SerializeField]
     private bool _isPossessed;
     [SerializeField]
     private Sprite _playerSprite;
     [SerializeField]
     private Sprite _ghostSprite;
-    [SerializeField]
-    private float _stunTime;
-    [SerializeField]
-    private float _speedDamper;
+    private SpriteRenderer _renderer;
 
     void Start()
     {
         _canPressButton = true;
-        GetComponent<SpriteRenderer>().sprite = _playerSprite;
+        _renderer = GetComponent<SpriteRenderer>()
+        _renderer.sprite = _playerSprite;
         if (_stunTime <= 0) {
             _stunTime = 1;
         }
@@ -97,7 +102,7 @@ public class PlayerController : MonoBehaviour
         if (collider.tag == "Ghost" && _canReclaimBody) {
             collider.GetComponent<GhostController>().RestartGhost();
             _isPossessed = false;
-            GetComponent<SpriteRenderer>().sprite = _playerSprite;
+            _renderer.sprite = _playerSprite;
             gameObject.layer = LayerMask.NameToLayer("Default");   
             _maxSpeed *= 2;
         }
@@ -120,7 +125,7 @@ public class PlayerController : MonoBehaviour
         _canReclaimBody = false;    
         GameManager.playerPaused = true;
         gameObject.layer = LayerMask.NameToLayer("Ghost");
-        GetComponent<SpriteRenderer>().sprite = _ghostSprite;
+        _renderer.sprite = _ghostSprite;
         StartCoroutine(ReclaimBodyCooldown());
     }    
 

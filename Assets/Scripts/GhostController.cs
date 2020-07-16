@@ -5,33 +5,37 @@ using UnityEngine.AI;
 
 public class GhostController : MonoBehaviour
 {    
-    enum AIState {
+    enum AI {
         StalkingPlayer,
         BackToStart
     }
 
+    // The object the AI is moving towards.
     [SerializeField]
     private Vector3 _target;    
     [SerializeField]
     private float _moveSpeed;
     [SerializeField]
     private float _currentSpeedMultiplier;
+    // The maximum speed that the ghost moves after it possesses the player.
     [SerializeField]
     private float _maxSpeedMultiplier;
     [SerializeField]
-    private AIState _state;
+    private AI _state;
     [SerializeField]
     private NavMeshAgent _agent;
     [SerializeField]
     private Transform _exit;
     [SerializeField]
     private Transform _hubSpawn;
+    // The ghost's spawn point during the opening cutscene.
     [SerializeField]
     private Transform _spawn;
 
     void Start()
     {        
-        _state = AIState.StalkingPlayer;
+        _state = AI.StalkingPlayer;
+
         if (!_exit) {
             _exit = GameObject.Find("Exit").transform;
         }
@@ -55,11 +59,11 @@ public class GhostController : MonoBehaviour
         _agent.destination = transform.position;        
         if (!GameManager.paused) {   
             _agent.isStopped = false;                
-            if (_state == AIState.StalkingPlayer) {
+            if (_state == AI.StalkingPlayer) {
                 Recorder.recording = true;
                 _target = GameObject.FindGameObjectWithTag("Player").transform.position;   
                 _currentSpeedMultiplier = 1f;                     
-            } else if (_state == AIState.BackToStart && Recorder.points.Count != 0) {
+            } else if (_state == AI.BackToStart && Recorder.points.Count != 0) {
                 _target = Recorder.points[Recorder.points.Count - 1];
                 if (Vector3.Distance(transform.position, _target) < 0.25f) {
                     Recorder.points.Remove(_target);
@@ -67,7 +71,7 @@ public class GhostController : MonoBehaviour
                 _currentSpeedMultiplier = _maxSpeedMultiplier;
             }
 
-            if (Recorder.points.Count == 0 && _state == AIState.BackToStart) {
+            if (Recorder.points.Count == 0 && _state == AI.BackToStart) {
                 _target = _exit.position;
             }
 
@@ -76,10 +80,10 @@ public class GhostController : MonoBehaviour
         }
 
 
-        if (Vector3.Distance(transform.position, _exit.position) < 1f && _state == AIState.BackToStart) {
+        if (Vector3.Distance(transform.position, _exit.position) < 1f && _state == AI.BackToStart) {
             GameManager.blackOut = true;
             SetNextPosition(_hubSpawn.position);
-            _state = AIState.StalkingPlayer;
+            _state = AI.StalkingPlayer;
         }
     }
 
@@ -88,13 +92,13 @@ public class GhostController : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider c) {
-        if (c.tag == "Player" && _state == AIState.StalkingPlayer) {
+        if (c.tag == "Player" && _state == AI.StalkingPlayer) {
             c.GetComponent<PlayerController>().Possession();            
-            _state = AIState.BackToStart;            
+            _state = AI.BackToStart;            
             Recorder.recording = false;
         }
 
-        if (c.GetComponent<Button>() != null && _state == AIState.BackToStart) {            
+        if (c.GetComponent<Button>() != null && _state == AI.BackToStart) {            
             PressButton(c.GetComponent<Button>());
         }
     }
@@ -110,6 +114,6 @@ public class GhostController : MonoBehaviour
         } else {
             transform.position = Recorder.points[0];
         }
-        _state = AIState.StalkingPlayer;        
+        _state = AI.StalkingPlayer;        
     }
 }
