@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     private float _stunTime;
     [SerializeField]
     private float _speedDamper;
+    private Animator anim;
 
     void Start()
     {
@@ -34,12 +35,16 @@ public class PlayerController : MonoBehaviour
         if (_stunTime <= 0) {
             _stunTime = 1;
         }
+
+        anim = GetComponent<Animator>();
+        anim.enabled = false;
     }
 
     void Update()
-    {            
-        if (!GameManager.paused)    
+    {
+        if (!GameManager.paused)
             Move();
+
     }
 
     private void PressButton(Button b) {
@@ -58,8 +63,10 @@ public class PlayerController : MonoBehaviour
             pos.x += horizontal;
             pos.y += vertical;
             transform.position = Vector3.Lerp(transform.position, pos, Time.deltaTime * _playerSpeed);
+            anim.enabled = true;
         } else {
             Decellerate();
+            anim.enabled = false;
         }
     }
 
