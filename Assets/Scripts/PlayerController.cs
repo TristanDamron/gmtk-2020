@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]
+    private bool _moving;
+    [SerializeField]
     private float _playerSpeed;
     [SerializeField]
     private float _maxSpeed;
@@ -61,9 +63,10 @@ public class PlayerController : MonoBehaviour
     private void Move() {
         var horizontal = Input.GetAxis("Horizontal");
         var vertical = Input.GetAxis("Vertical");
-        var moving = (horizontal != 0f || vertical != 0f);
         
-        if (moving && !GameManager.playerPaused) {
+        _moving = (horizontal != 0f || vertical != 0f);
+        
+        if (_moving && !GameManager.playerPaused) {
             Accelerate();            
             var pos = transform.position;
             pos.x += horizontal;
@@ -145,7 +148,11 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator ReclaimBodyCooldown() {
         yield return new WaitForSeconds(_stunTime);
-        _canReclaimBody = true;        
-        GameManager.playerPaused = false;
+        if (!_moving) {
+            StartCoroutine(ReclaimBodyCooldown());
+        } else {
+            _canReclaimBody = true;        
+            GameManager.playerPaused = false;                    
+        }
     }
 }
