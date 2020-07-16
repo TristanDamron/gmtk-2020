@@ -29,19 +29,21 @@ public class PlayerController : MonoBehaviour
     private Sprite _playerSprite;
     [SerializeField]
     private Sprite _ghostSprite;
+    [SerializeField]
+    private Animator _anim;
     private SpriteRenderer _renderer;
 
     void Start()
     {
         _canPressButton = true;
-        _renderer = GetComponent<SpriteRenderer>()
+        _renderer = GetComponent<SpriteRenderer>();
         _renderer.sprite = _playerSprite;
         if (_stunTime <= 0) {
             _stunTime = 1;
         }
 
-        anim = GetComponent<Animator>();
-        anim.enabled = false;
+        _anim = GetComponent<Animator>();
+        _anim.enabled = false;
     }
 
     void Update()
@@ -66,11 +68,17 @@ public class PlayerController : MonoBehaviour
             var pos = transform.position;
             pos.x += horizontal;
             pos.y += vertical;
+
+            if (horizontal < 0) 
+                _renderer.flipX = false;
+            else
+                _renderer.flipX = true;
+
             transform.position = Vector3.Lerp(transform.position, pos, Time.deltaTime * _playerSpeed);
-            anim.enabled = true;
+            _anim.enabled = true;
         } else {
             Decellerate();
-            anim.enabled = false;
+            _anim.enabled = false;
         }
     }
 
