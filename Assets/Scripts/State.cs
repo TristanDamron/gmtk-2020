@@ -14,10 +14,10 @@ public class State : MonoBehaviour
     [SerializeField]
     private bool _disabled;
     [SerializeField]
-    private ParticleSystem _closingParticles;
+    private ParticleSystem _openingParticles;
 
     void Start() {
-        _closingParticles = GetComponentInChildren<ParticleSystem>();
+        _openingParticles = GetComponentInChildren<ParticleSystem>();
 
         if (!_disabled) {
             switch(_type) {
@@ -40,7 +40,7 @@ public class State : MonoBehaviour
         // GetComponent<SpriteRenderer>().color = Color.green;            
         GetComponent<SpriteRenderer>().enabled = false;   
         if (_type == StateType.Close)
-            _closingParticles.Play();
+            _openingParticles.Play();
         _disabled = true;             
     }
 
@@ -60,7 +60,7 @@ public class State : MonoBehaviour
                     GetComponent<BoxCollider>().isTrigger = true; 
                     // GetComponent<SpriteRenderer>().color = Color.green;
                     GetComponent<SpriteRenderer>().enabled = false;                                               
-                    _closingParticles.Play();
+                    _openingParticles.Play();
                     break;
             }
         }

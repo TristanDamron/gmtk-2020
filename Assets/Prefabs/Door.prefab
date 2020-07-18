@@ -111,7 +111,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _type: 0
   _disabled: 0
-  _closingParticles: {fileID: 0}
+  _openingParticles: {fileID: 0}
 --- !u!1 &9167347900950471921
 GameObject:
   m_ObjectHideFlags: 0
@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 5083866306704715409}
   - component: {fileID: 3249370899909388371}
   m_Layer: 9
-  m_Name: Closing Particles
+  m_Name: Opening  Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
