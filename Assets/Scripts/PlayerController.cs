@@ -58,14 +58,14 @@ public class PlayerController : MonoBehaviour
 
     private void PressButton(Button b) {
         _anim.Play("Gwen Jump", -1, 0f);           
-        _jumping = true;
-        b.ActivateButton();
+        _jumping = true;        
         _canPressButton = false;
-        StartCoroutine(StopJump());
+        StartCoroutine(StopJump(b));
     }
 
-    private IEnumerator StopJump() {
+    private IEnumerator StopJump(Button b) {
         yield return new WaitForSeconds(0.2f);
+        b.ActivateButton();        
         _jumping = false;
     }
 
