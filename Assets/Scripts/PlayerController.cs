@@ -33,6 +33,8 @@ public class PlayerController : MonoBehaviour
     private Sprite _ghostSprite;
     [SerializeField]
     private Animator _anim;
+    [SerializeField]
+    private bool _jumping;
     private SpriteRenderer _renderer;
 
     void Start()
@@ -44,8 +46,7 @@ public class PlayerController : MonoBehaviour
             _stunTime = 1;
         }
 
-        _anim = GetComponent<Animator>();
-        _anim.enabled = false;
+        _anim = GetComponent<Animator>();        
     }
 
     void Update()
@@ -56,8 +57,16 @@ public class PlayerController : MonoBehaviour
     }
 
     private void PressButton(Button b) {
+        _anim.Play("Gwen Jump", -1, 0f);           
+        _jumping = true;
         b.ActivateButton();
         _canPressButton = false;
+        StartCoroutine(StopJump());
+    }
+
+    private IEnumerator StopJump() {
+        yield return new WaitForSeconds(0.2f);
+        _jumping = false;
     }
 
     private void Move() {
@@ -66,7 +75,7 @@ public class PlayerController : MonoBehaviour
         
         _moving = (horizontal != 0f || vertical != 0f);
         
-        if (_moving && !GameManager.playerPaused) {
+        if (_moving && !GameManager.playerPaused && !_jumping) {
             Accelerate();            
             var pos = transform.position;
             pos.x += horizontal;
@@ -78,10 +87,13 @@ public class PlayerController : MonoBehaviour
                 _renderer.flipX = true;
 
             transform.position = Vector3.Lerp(transform.position, pos, Time.deltaTime * _playerSpeed);
-            _anim.enabled = true;
+            _anim.Play("Gwen Walk");
         } else {
-            Decellerate();
-            _anim.enabled = false;
+            Decellerate();            
+        }
+
+        if (!_moving && !_jumping) {
+            _anim.Play("Gwen Idle");            
         }
     }
 
