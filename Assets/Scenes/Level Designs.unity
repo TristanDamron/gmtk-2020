@@ -9089,13 +9089,29 @@ PrefabInstance:
     m_TransformParent: {fileID: 766671097}
     m_Modifications:
     - target: {fileID: 1114257971, guid: 294ac4bc49e9d5a45b76acb99835bca9, type: 3}
-      propertyPath: _moveSpeed
-      value: 0.4
-      objectReference: {fileID: 0}
+      propertyPath: _exit
+      value: 
+      objectReference: {fileID: 2121256916}
+    - target: {fileID: 1114257971, guid: 294ac4bc49e9d5a45b76acb99835bca9, type: 3}
+      propertyPath: _hubSpawn
+      value: 
+      objectReference: {fileID: 1728443622}
     - target: {fileID: 1114257971, guid: 294ac4bc49e9d5a45b76acb99835bca9, type: 3}
       propertyPath: _spawn
       value: 
       objectReference: {fileID: 479230070}
+    - target: {fileID: 1114257971, guid: 294ac4bc49e9d5a45b76acb99835bca9, type: 3}
+      propertyPath: speed
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1114257971, guid: 294ac4bc49e9d5a45b76acb99835bca9, type: 3}
+      propertyPath: _currentSpeedMultiplier
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1114257971, guid: 294ac4bc49e9d5a45b76acb99835bca9, type: 3}
+      propertyPath: agent
+      value: 
+      objectReference: {fileID: 1357317917}
     - target: {fileID: 177765812917907467, guid: 294ac4bc49e9d5a45b76acb99835bca9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10071,6 +10087,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4851711853173411513, guid: 42cc54f3342d246479ed9b1b59d17941,
     type: 3}
   m_PrefabInstance: {fileID: 1166187127}
+  m_PrefabAsset: {fileID: 0}
+--- !u!195 &1357317917 stripped
+NavMeshAgent:
+  m_CorrespondingSourceObject: {fileID: 1114257973, guid: 294ac4bc49e9d5a45b76acb99835bca9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1189572138}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1363434368
 GameObject:

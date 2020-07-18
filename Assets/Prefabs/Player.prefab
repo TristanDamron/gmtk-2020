@@ -148,21 +148,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e29751873e919004f9c168c7aaf4b874, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moving: 0
-  _playerSpeed: 0
-  _maxSpeed: 1
-  _accelerationRate: 0.25
-  _decellerationRate: 1
-  _canPressButton: 0
-  _stunTime: 0
+  speed: 0
+  maxSpeed: 1.2
+  accelerationRate: 0.2
+  decelerationRate: 0
+  moving: 0
+  jumping: 0
+  canPressButton: 0
+  anim: {fileID: 4786265451571502847}
+  renderer: {fileID: 5170037266432675116}
+  _stunTime: 2
   _canReclaimBody: 0
-  _speedDamper: 0
+  _speedDamper: 2
   _isPossessed: 0
   _playerSprite: {fileID: -7504681022148712040, guid: 0aea7c997bc9e4fb693aef3399359dd1,
     type: 3}
   _ghostSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  _anim: {fileID: 0}
-  _jumping: 0
 --- !u!54 &1767265618
 Rigidbody:
   m_ObjectHideFlags: 0

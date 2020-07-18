@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1168296240}
   - component: {fileID: 1168296241}
   - component: {fileID: 1168296242}
+  - component: {fileID: 1570674929266068975}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -94,6 +95,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec6bcf778fda9be49a22736a7ae5eb3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &1570674929266068975
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1168296239}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a20716b2c41c64701b8ff9f4da5aa7fa, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &177765812917907469
 GameObject:
   m_ObjectHideFlags: 0
@@ -154,8 +174,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32cde52cb3f80c04b9cda5cccce2b678, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 1
+  maxSpeed: 0
+  accelerationRate: 0
+  decelerationRate: 0
+  moving: 0
+  jumping: 0
+  canPressButton: 0
+  anim: {fileID: 1570674929266068975}
+  renderer: {fileID: 1168296241}
   _target: {x: 0, y: 0, z: 0}
-  _moveSpeed: 0.4
   _currentSpeedMultiplier: 0
   _maxSpeedMultiplier: 3
   _state: 0
@@ -163,7 +191,6 @@ MonoBehaviour:
   _exit: {fileID: 0}
   _hubSpawn: {fileID: 0}
   _spawn: {fileID: 0}
-  _renderer: {fileID: 0}
   _ghostSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   _humanSprite: {fileID: -4302697993261701181, guid: 2eaf565cfce71479e9b4eba2ac2956f5,
     type: 3}
