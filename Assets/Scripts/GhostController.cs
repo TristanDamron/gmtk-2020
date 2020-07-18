@@ -30,7 +30,12 @@ public class GhostController : MonoBehaviour
     private Transform _hubSpawn;
     // The ghost's spawn point during the opening cutscene.
     [SerializeField]
-    private Transform _spawn;
+    private Transform _spawn;    
+    [SerializeField]
+    private Sprite _ghostSprite;
+    [SerializeField]
+    private Sprite _humanSprite;
+    private SpriteRenderer _renderer;
 
     void Start()
     {        
@@ -47,6 +52,12 @@ public class GhostController : MonoBehaviour
         if (!_spawn) {
             _spawn = GameObject.Find("Ghost Spawn Point").transform;
         }
+
+        if (!_ghostSprite) {
+            _ghostSprite = _renderer.sprite;
+        }
+
+        _renderer = GetComponentInChildren<SpriteRenderer>();
     }
     
     void Update()
@@ -60,10 +71,20 @@ public class GhostController : MonoBehaviour
         if (!GameManager.paused) {   
             _agent.isStopped = false;                
             if (_state == AI.StalkingPlayer) {
+                // @todo(tdamron): This is pretty inefficient. This sprite switch should only be checked once.
+                if (_renderer.sprite != _ghostSprite) {
+                    _renderer.sprite = _ghostSprite;
+                }   
+
                 Recorder.recording = true;
                 _target = GameObject.FindGameObjectWithTag("Player").transform.position;   
                 _currentSpeedMultiplier = 1f;                     
             } else if (_state == AI.BackToStart && Recorder.points.Count != 0) {
+                // @todo(tdamron): This is pretty inefficient. This sprite switch should only be checked once.
+                if (_renderer.sprite != _humanSprite) {
+                    _renderer.sprite = _humanSprite;
+                }
+
                 _target = Recorder.points[Recorder.points.Count - 1];
                 if (Vector3.Distance(transform.position, _target) < 0.25f) {
                     Recorder.points.Remove(_target);

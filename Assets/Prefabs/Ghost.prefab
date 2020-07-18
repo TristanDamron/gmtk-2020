@@ -155,12 +155,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _target: {x: 0, y: 0, z: 0}
-  _moveSpeed: 0.25
+  _moveSpeed: 0.4
   _currentSpeedMultiplier: 0
   _maxSpeedMultiplier: 3
   _state: 0
   _agent: {fileID: 1114257973}
   _exit: {fileID: 0}
+  _hubSpawn: {fileID: 0}
+  _spawn: {fileID: 0}
+  _renderer: {fileID: 0}
+  _ghostSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  _humanSprite: {fileID: -4302697993261701181, guid: 2eaf565cfce71479e9b4eba2ac2956f5,
+    type: 3}
 --- !u!195 &1114257973
 NavMeshAgent:
   m_ObjectHideFlags: 0
