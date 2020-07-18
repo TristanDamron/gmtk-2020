@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5420,31 +5420,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &714710342 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7661846053110128662, guid: 57702855997cb3043829163cff09e9e5,
-    type: 3}
-  m_PrefabInstance: {fileID: 7661846053322861348}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &714710348
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 714710342}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: bffd6f59a1cfa46ffa3863f951ee87b3, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &738524923
 GameObject:
   m_ObjectHideFlags: 0
@@ -15835,37 +15810,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7661846053110128656, guid: 57702855997cb3043829163cff09e9e5,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7661846053110128656, guid: 57702855997cb3043829163cff09e9e5,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7661846053110128656, guid: 57702855997cb3043829163cff09e9e5,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7661846053110128656, guid: 57702855997cb3043829163cff09e9e5,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -7504681022148712040, guid: 0aea7c997bc9e4fb693aef3399359dd1,
-        type: 3}
-    - target: {fileID: 7661846053110128656, guid: 57702855997cb3043829163cff09e9e5,
-        type: 3}
-      propertyPath: m_FlipX
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7661846053110128656, guid: 57702855997cb3043829163cff09e9e5,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7661846053110128657, guid: 57702855997cb3043829163cff09e9e5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -15925,17 +15869,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 7661846053110128663, guid: 57702855997cb3043829163cff09e9e5,
-        type: 3}
-      propertyPath: _playerSprite
-      value: 
-      objectReference: {fileID: -7504681022148712040, guid: 0aea7c997bc9e4fb693aef3399359dd1,
-        type: 3}
-    - target: {fileID: 7661846053110128663, guid: 57702855997cb3043829163cff09e9e5,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57702855997cb3043829163cff09e9e5, type: 3}

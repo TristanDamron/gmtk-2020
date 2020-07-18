@@ -40,13 +40,13 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         _canPressButton = true;
-        _renderer = GetComponent<SpriteRenderer>();
+        _renderer = GetComponentInChildren<SpriteRenderer>();
         _renderer.sprite = _playerSprite;
         if (_stunTime <= 0) {
             _stunTime = 1;
         }
 
-        _anim = GetComponent<Animator>();        
+        _anim = GetComponentInChildren<Animator>();        
     }
 
     void Update()
@@ -132,6 +132,7 @@ public class PlayerController : MonoBehaviour
             collider.GetComponent<GhostController>().RestartGhost();
             _isPossessed = false;
             _renderer.sprite = _playerSprite;
+            _anim.enabled = true;
             gameObject.layer = LayerMask.NameToLayer("Default");   
             _maxSpeed *= 2;
         }
@@ -155,6 +156,7 @@ public class PlayerController : MonoBehaviour
         GameManager.playerPaused = true;
         gameObject.layer = LayerMask.NameToLayer("Ghost");
         _renderer.sprite = _ghostSprite;
+        _anim.enabled = false;
         StartCoroutine(ReclaimBodyCooldown());
     }    
 
