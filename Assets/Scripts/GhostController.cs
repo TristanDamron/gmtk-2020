@@ -130,11 +130,12 @@ public class GhostController : Controller
     }
 
     public void ReleasePlayer() {
-        if (Recorder.points.Count == 0) {
-            transform.position = _exit.position;
-        } else {
-            transform.position = Recorder.points[0];
-        }
+        SetNextPosition(_exit.position);
+        // if (Recorder.points.Count == 0) {
+        //     _exit.position;
+        // } else {
+        //     transform.position = Recorder.points[0];
+        // }
 
         _state = AI.StalkingPlayer;        
 
