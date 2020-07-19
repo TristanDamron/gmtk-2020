@@ -26,6 +26,7 @@ public class GhostController : Controller
     [SerializeField]
     private Sprite _humanSprite;    
     private GameObject _player;
+    private ParticleSystem _ghostRespawnParticles;
 
     void Start()
     {        
@@ -46,6 +47,8 @@ public class GhostController : Controller
         if (!_ghostSprite) {
             _ghostSprite = renderer.sprite;
         }        
+
+        _ghostRespawnParticles = GetComponentInChildren<ParticleSystem>();
     }
     
     void Update()
@@ -116,12 +119,17 @@ public class GhostController : Controller
         }
     }
 
-    public void SetNextPosition(Vector3 pos) {
-        Debug.Log("Warping to " + pos);
+    public void SetNextPosition(Vector3 pos) {     
+        var tmpParticles = Instantiate(_ghostRespawnParticles.gameObject, transform.position, transform.rotation);                     
+        tmpParticles.transform.parent = null;
+        tmpParticles.GetComponent<ParticleSystem>().Play();
+        
+        // Debug.Log("Warping to " + pos);
         agent.Warp(pos);    
     }
 
     public void PossessPlayer(PlayerController p) {
+        _ghostRespawnParticles.Play();
         p.Possession();
         anim.Play("Gwen Walk");
         _currentSpeedMultiplier = _maxSpeedMultiplier;
@@ -129,7 +137,7 @@ public class GhostController : Controller
         Recorder.recording = false;
     }
 
-    public void ReleasePlayer() {
+    public void ReleasePlayer() {          
         SetNextPosition(_exit.position);
         // if (Recorder.points.Count == 0) {
         //     _exit.position;
