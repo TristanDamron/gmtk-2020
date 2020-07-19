@@ -49,7 +49,7 @@ public class PlayerController : Controller
 
             if (horizontal < 0) 
                 renderer.flipX = false;
-            else
+            else if (horizontal > 0)
                 renderer.flipX = true;
 
             transform.position = Vector3.Lerp(transform.position, pos, Time.deltaTime * speed);
