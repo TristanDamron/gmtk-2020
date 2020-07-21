@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1168296239}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.187}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 177765812917907467}
@@ -72,7 +72,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 3420694760865938882, guid: a21f3cf0bd2854bf0bcdf09300beaadd,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -175,7 +176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32cde52cb3f80c04b9cda5cccce2b678, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 0.6
   maxSpeed: 0
   accelerationRate: 0
   decelerationRate: 0
@@ -184,9 +185,9 @@ MonoBehaviour:
   canPressButton: 0
   anim: {fileID: 1570674929266068975}
   renderer: {fileID: 1168296241}
-  agent: {fileID: 0}
+  agent: {fileID: 1114257973}
   _target: {x: 0, y: 0, z: 0}
-  _currentSpeedMultiplier: 0
+  _currentSpeedMultiplier: 0.8
   _maxSpeedMultiplier: 3
   _state: 0
   _exit: {fileID: 0}
