@@ -53,12 +53,13 @@ public class PlayerController : Controller
                 renderer.flipX = true;
 
             transform.position = Vector3.Lerp(transform.position, pos, Time.deltaTime * speed);
-            anim.Play("Gwen Walk");
+	    if (!_isPossessed)
+		anim.Play("Gwen Walk");
         } else {
             Decelerate();            
         }
 
-        if (!moving && !jumping) {
+        if (!moving && !jumping && !_isPossessed) {
             anim.Play("Gwen Idle");            
         }
     }
@@ -99,8 +100,7 @@ public class PlayerController : Controller
         _canReclaimBody = false;    
         GameManager.playerPaused = true;
         gameObject.layer = LayerMask.NameToLayer("Ghost");
-        renderer.sprite = _ghostSprite;
-        anim.enabled = false;
+	anim.Play("Ghost Gwen Move");
         StartCoroutine(ReclaimBodyCooldown());
     }    
 
