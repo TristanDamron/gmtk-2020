@@ -8522,6 +8522,21 @@ PrefabInstance:
       propertyPath: _delay
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 1301934593816671300, guid: 637f52fc0b3d1364eaa219a8fb239933,
+        type: 3}
+      propertyPath: _minimumShake
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1301934593816671300, guid: 637f52fc0b3d1364eaa219a8fb239933,
+        type: 3}
+      propertyPath: _maximumShake
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1301934593816671300, guid: 637f52fc0b3d1364eaa219a8fb239933,
+        type: 3}
+      propertyPath: _length
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1301934593816671301, guid: 637f52fc0b3d1364eaa219a8fb239933,
         type: 3}
       propertyPath: m_LocalPosition.x

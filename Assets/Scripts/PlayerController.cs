@@ -94,6 +94,7 @@ public class PlayerController : Controller
     }
 
     public void Possession() {
+	CameraFollow.screenShake = true;
         maxSpeed /= 2;
         speed = 0;
         _isPossessed = true;
