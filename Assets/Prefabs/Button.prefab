@@ -99,6 +99,8 @@ MonoBehaviour:
   _actions:
   - {fileID: 0}
   _foreverDoor: 0
+  _onSprite: {fileID: 0}
+  _offSprite: {fileID: 0}
 --- !u!65 &3960902280224209018
 BoxCollider:
   m_ObjectHideFlags: 0

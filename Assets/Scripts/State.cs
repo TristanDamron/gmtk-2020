@@ -17,7 +17,7 @@ public class State : MonoBehaviour
     private ParticleSystem _openingParticles;
 
     void Start() {
-        _openingParticles = GetComponentInChildren<ParticleSystem>();
+        _openingParticles = GetComponentInChildren<ParticleSystem>();	
 
         if (!_disabled) {
             switch(_type) {
