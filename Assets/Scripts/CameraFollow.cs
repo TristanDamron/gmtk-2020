@@ -14,6 +14,15 @@ public class CameraFollow : MonoBehaviour
     private float _maxZoomLevel;
     [SerializeField]
     private bool _ghostIntroStarted;
+    [SerializeField]
+    private float _minimumShake;
+    [SerializeField]
+    private float _maximumShake;
+    [SerializeField]
+    private float _length;    
+    private float _shakeTargetValue;
+    private float _shakeTimer;
+    public static bool screenShake;
 
     void Start() {
         if (!_target) {
@@ -52,12 +61,25 @@ public class CameraFollow : MonoBehaviour
         pos.y = _target.position.y;
         transform.position = Vector3.Lerp(transform.position, pos, Time.deltaTime / _delay);
 
-        if (Input.GetKey(KeyCode.LeftShift)) {
-            GameManager.paused = true;
-            GetComponent<Camera>().orthographicSize = Mathf.Lerp(GetComponent<Camera>().orthographicSize, _maxZoomLevel, Time.deltaTime * 4f);
-        } else {
-            GameManager.paused = false;
-            GetComponent<Camera>().orthographicSize = Mathf.Lerp(GetComponent<Camera>().orthographicSize, _minZoomLevel, Time.deltaTime * 4f);
-        }
+	if (!screenShake) {
+	    if (Input.GetKey(KeyCode.LeftShift)) {
+		GameManager.paused = true;
+		GetComponent<Camera>().orthographicSize = Mathf.Lerp(GetComponent<Camera>().orthographicSize, _maxZoomLevel, Time.deltaTime * 4f);
+	    } else {
+		GameManager.paused = false;
+		GetComponent<Camera>().orthographicSize = Mathf.Lerp(GetComponent<Camera>().orthographicSize, _minZoomLevel, Time.deltaTime * 4f);
+	    }
+	} else {
+	    _shakeTimer += Time.deltaTime;
+
+	    if (_shakeTimer >= _length) {
+		_shakeTimer = 0f;
+		screenShake = false;
+	    }
+
+	    var shakePos = transform.position;
+	    shakePos.x += Random.Range(_minimumShake, _maximumShake);
+	    transform.position = Vector3.Lerp(transform.position, shakePos, Time.deltaTime * _length);
+	}
     }
 }
