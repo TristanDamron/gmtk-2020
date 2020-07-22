@@ -9,4 +9,5 @@ public class GameManager : MonoBehaviour
     public static int items = 0;            
     public static bool blackOut = false;
     public static bool ghostIntro = false;
+    public static bool chase = false;
 }

@@ -100,6 +100,7 @@ public class GhostController : Controller
 
         if (Vector3.Distance(transform.position, _exit.position) < 1f && _state == AI.BackToStart) {
             GameManager.blackOut = true;
+            GameManager.chase = false;
             SetNextPosition(_hubSpawn.position);
             if (renderer.sprite != _ghostSprite) {
                 renderer.sprite = _ghostSprite;
@@ -138,7 +139,7 @@ public class GhostController : Controller
     }
 
     public void ReleasePlayer() {          
-        SetNextPosition(_exit.position);
+        SetNextPosition(_exit.position);        
         // if (Recorder.points.Count == 0) {
         //     _exit.position;
         // } else {

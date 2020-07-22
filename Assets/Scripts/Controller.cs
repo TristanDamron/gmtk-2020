@@ -15,6 +15,7 @@ public class Controller : MonoBehaviour
     public Animator anim;
     public SpriteRenderer renderer;
     public UnityEngine.AI.NavMeshAgent agent;
+    private GameObject _buttonJumpedOn;
     public enum AI {
         StalkingPlayer,
         BackToStart
@@ -36,7 +37,13 @@ public class Controller : MonoBehaviour
         if (GetComponent<NavMeshAgent>())
             agent = GetComponent<NavMeshAgent>();
     }
-    
+
+    void Update() {
+        // if (jumping) {
+        //     transform.position = Vector3.Lerp(transform.position, _buttonJumpedOn.transform.position, Time.deltaTime * 50f);
+        // }
+    }
+
     public void PickUp(GameObject g) {
         g.GetComponent<BoxCollider>().enabled = false;
         g.GetComponent<SpriteRenderer>().enabled = false;        
@@ -44,13 +51,14 @@ public class Controller : MonoBehaviour
     }
 
     public void PressButton(Button b) {
-        anim.Play("Gwen Jump", -1, 0f);
+        anim.Play("Gwen Jump", -1, 0f);  
+        _buttonJumpedOn = b.gameObject;              
         jumping = true;        
         canPressButton = true;
         StartCoroutine(StopJumpAndActivateButton(b));
     }
 
-    private IEnumerator StopJumpAndActivateButton(Button b) {
+    private IEnumerator StopJumpAndActivateButton(Button b) {        
         yield return new WaitForSeconds(0.2f);
         b.ActivateButton();        
         jumping = false;

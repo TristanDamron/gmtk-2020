@@ -80,6 +80,7 @@ public class PlayerController : Controller
             anim.enabled = true;
             gameObject.layer = LayerMask.NameToLayer("Default");   
             maxSpeed *= 2;
+            GameManager.chase = false;
         }
 
         if (collider.tag == "Item" && !_isPossessed) {
@@ -94,14 +95,15 @@ public class PlayerController : Controller
     }
 
     public void Possession() {
-	CameraFollow.screenShake = true;
+        GameManager.chase = true;
+	    CameraFollow.screenShake = true;
         maxSpeed /= 2;
         speed = 0;
         _isPossessed = true;
         _canReclaimBody = false;    
         GameManager.playerPaused = true;
         gameObject.layer = LayerMask.NameToLayer("Ghost");
-	anim.Play("Ghost Gwen Move");
+	    anim.Play("Ghost Gwen Move");
         StartCoroutine(ReclaimBodyCooldown());
     }    
 

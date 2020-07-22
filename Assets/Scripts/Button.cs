@@ -14,9 +14,24 @@ public class Button : MonoBehaviour
     private Sprite _offSprite;
     private SpriteRenderer _renderer;    
     private bool _on;
+    private BoxCollider _trigger;
+    private Vector3 _defaultTriggerSize;
+    private Vector3 _biggerTriggerSize;
+
 
     void Start() {
 	    _renderer = GetComponent<SpriteRenderer>();
+        _trigger = GetComponent<BoxCollider>();
+        _defaultTriggerSize = _trigger.size;
+        _biggerTriggerSize = _defaultTriggerSize * 6;
+    }
+
+    void Update() {
+        if (GameManager.chase) {
+            _trigger.size = _biggerTriggerSize;
+        } else {
+            _trigger.size = _defaultTriggerSize;
+        }
     }
     
     public void ActivateButton() {        

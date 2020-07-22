@@ -6,6 +6,8 @@ public class Recorder : MonoBehaviour
 {
     [SerializeField]
     private Transform _player;    
+    [SerializeField]
+    private int _accuracy;
     public static List<Vector3> points = new List<Vector3>();    
     public static bool recording = true;
 
@@ -21,7 +23,7 @@ public class Recorder : MonoBehaviour
                 points.Add(_player.position);
             }
 
-            if (Vector3.Distance(_player.position, points[points.Count - 1]) > 0.1f) {                
+            if (Vector3.Distance(_player.position, points[points.Count - 1]) > 1f / _accuracy) {                
                 points.Add(_player.position);
             }
         }        
