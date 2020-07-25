@@ -7791,7 +7791,7 @@ PrefabInstance:
     - target: {fileID: 2869993286842435588, guid: eb41032c7ac5c3d45b7405ab35535e0f,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7842716520293176872, guid: eb41032c7ac5c3d45b7405ab35535e0f,
         type: 3}
@@ -7873,6 +7873,11 @@ PrefabInstance:
       propertyPath: DopplerLevel
       value: 3.42
       objectReference: {fileID: 0}
+    - target: {fileID: 8063010269416508174, guid: eb41032c7ac5c3d45b7405ab35535e0f,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: c7a0e21e9abb24c28b17d7c86339de02, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb41032c7ac5c3d45b7405ab35535e0f, type: 3}
 --- !u!4 &790724139 stripped
