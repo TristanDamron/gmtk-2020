@@ -15,9 +15,13 @@ public class State : MonoBehaviour
     private bool _disabled;
     [SerializeField]
     private ParticleSystem _openingParticles;
+    [SerializeField]
+    private AudioClip _openingSound;
+    private AudioSource _src;
 
     void Start() {
         _openingParticles = GetComponentInChildren<ParticleSystem>();	
+        _src = GetComponentInChildren<AudioSource>();
 
         if (!_disabled) {
             switch(_type) {
@@ -52,7 +56,8 @@ public class State : MonoBehaviour
                     _type = StateType.Close;
                     GetComponent<BoxCollider>().isTrigger = false;                
                     // GetComponent<SpriteRenderer>().color = Color.red;
-                    GetComponent<SpriteRenderer>().enabled = true;                
+                    GetComponent<SpriteRenderer>().enabled = true;                                    
+                    _src.PlayOneShot(_openingSound);
                     break;
                 // CLOSED = ON = RED
                 case StateType.Close:
@@ -61,6 +66,7 @@ public class State : MonoBehaviour
                     // GetComponent<SpriteRenderer>().color = Color.green;
                     GetComponent<SpriteRenderer>().enabled = false;                                               
                     _openingParticles.Play();
+                    _src.PlayOneShot(_openingSound);                    
                     break;
             }
         }

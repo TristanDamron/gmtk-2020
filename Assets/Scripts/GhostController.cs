@@ -27,10 +27,14 @@ public class GhostController : Controller
     private Sprite _humanSprite;    
     private GameObject _player;
     private ParticleSystem _ghostRespawnParticles;
+    [SerializeField]
+    private AudioClip _possessionSound;
+    private AudioSource _src;
 
     void Start()
     {        
         _state = AI.StalkingPlayer;
+        _src = GetComponentInChildren<AudioSource>();
 
         if (!_exit) {
             _exit = GameObject.Find("Exit").transform;
@@ -131,6 +135,7 @@ public class GhostController : Controller
 
     public void PossessPlayer(PlayerController p) {
         _ghostRespawnParticles.Play();
+        _src.PlayOneShot(_possessionSound);
         p.Possession();
         anim.Play("Gwen Walk");
         _currentSpeedMultiplier = _maxSpeedMultiplier;
