@@ -81,25 +81,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &4265025471434687263
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6604635370442221646}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 87c7804680ca0444ca5ccc38246dba2b, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6998017102833157543
 GameObject:
   m_ObjectHideFlags: 0
@@ -5077,6 +5058,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8894249415164157897, guid: 6a80fbebbdb3b4897832ad28ad544fe1,
+        type: 3}
+      propertyPath: _minimumLightIntensity
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8894249415164157897, guid: 6a80fbebbdb3b4897832ad28ad544fe1,
+        type: 3}
+      propertyPath: _maximumLightIntensity
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8894249415164157897, guid: 6a80fbebbdb3b4897832ad28ad544fe1,
+        type: 3}
+      propertyPath: _maxDelay
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9139402444651683854, guid: 6a80fbebbdb3b4897832ad28ad544fe1,
         type: 3}
       propertyPath: m_Type
@@ -5114,12 +5110,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a80fbebbdb3b4897832ad28ad544fe1, type: 3}
---- !u!1 &6604635370442221646 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 52465681492005415, guid: 6a80fbebbdb3b4897832ad28ad544fe1,
-    type: 3}
-  m_PrefabInstance: {fileID: 6562313800409332329}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &21009404549461221 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6582193731570912908, guid: 6a80fbebbdb3b4897832ad28ad544fe1,
