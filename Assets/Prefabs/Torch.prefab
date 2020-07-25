@@ -5061,7 +5061,7 @@ PrefabInstance:
     - target: {fileID: 8894249415164157897, guid: 6a80fbebbdb3b4897832ad28ad544fe1,
         type: 3}
       propertyPath: _minimumLightIntensity
-      value: 25
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 8894249415164157897, guid: 6a80fbebbdb3b4897832ad28ad544fe1,
         type: 3}
@@ -5071,7 +5071,7 @@ PrefabInstance:
     - target: {fileID: 8894249415164157897, guid: 6a80fbebbdb3b4897832ad28ad544fe1,
         type: 3}
       propertyPath: _maxDelay
-      value: 1
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 9139402444651683854, guid: 6a80fbebbdb3b4897832ad28ad544fe1,
         type: 3}
@@ -5107,6 +5107,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_InnerSpotAngle
       value: 17.29432
+      objectReference: {fileID: 0}
+    - target: {fileID: 9139402444651683854, guid: 6a80fbebbdb3b4897832ad28ad544fe1,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.56709385
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a80fbebbdb3b4897832ad28ad544fe1, type: 3}
