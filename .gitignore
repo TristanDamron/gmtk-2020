@@ -57,5 +57,9 @@ sysinfo.txt
 
 # Crashlytics generated file
 crashlytics-build.properties
+# vim files
+*~
+*.swo
+*.swp
 
 Assets/Scenes/Ghost Test.meta
