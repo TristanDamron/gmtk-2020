@@ -5011,12 +5011,12 @@ PrefabInstance:
     - target: {fileID: 6582193731570912908, guid: 6a80fbebbdb3b4897832ad28ad544fe1,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.084
       objectReference: {fileID: 0}
     - target: {fileID: 6582193731570912908, guid: 6a80fbebbdb3b4897832ad28ad544fe1,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.15
+      value: -0.58
       objectReference: {fileID: 0}
     - target: {fileID: 6582193731570912908, guid: 6a80fbebbdb3b4897832ad28ad544fe1,
         type: 3}
@@ -5061,12 +5061,12 @@ PrefabInstance:
     - target: {fileID: 8894249415164157897, guid: 6a80fbebbdb3b4897832ad28ad544fe1,
         type: 3}
       propertyPath: _minimumLightIntensity
-      value: 23
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 8894249415164157897, guid: 6a80fbebbdb3b4897832ad28ad544fe1,
         type: 3}
       propertyPath: _maximumLightIntensity
-      value: 30
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 8894249415164157897, guid: 6a80fbebbdb3b4897832ad28ad544fe1,
         type: 3}
@@ -5081,17 +5081,17 @@ PrefabInstance:
     - target: {fileID: 9139402444651683854, guid: 6a80fbebbdb3b4897832ad28ad544fe1,
         type: 3}
       propertyPath: m_Intensity
-      value: 31.68
+      value: 2.03
       objectReference: {fileID: 0}
     - target: {fileID: 9139402444651683854, guid: 6a80fbebbdb3b4897832ad28ad544fe1,
         type: 3}
       propertyPath: m_Range
-      value: 2.329555
+      value: 1.7
       objectReference: {fileID: 0}
     - target: {fileID: 9139402444651683854, guid: 6a80fbebbdb3b4897832ad28ad544fe1,
         type: 3}
       propertyPath: m_SpotAngle
-      value: 41.813316
+      value: 52
       objectReference: {fileID: 0}
     - target: {fileID: 9139402444651683854, guid: 6a80fbebbdb3b4897832ad28ad544fe1,
         type: 3}
